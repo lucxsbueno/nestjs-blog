@@ -43,6 +43,7 @@ export class PostsService {
         author: true,
         categories: true,
         tags: true,
+        comments: true,
       },
     });
 
