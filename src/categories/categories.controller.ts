@@ -7,6 +7,8 @@ import {
   Param,
   Delete,
   Query,
+  DefaultValuePipe,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { CategoriesService } from './categories.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
@@ -24,8 +26,8 @@ export class CategoriesController {
   @Get()
   findAll(
     @Query('search') search: string,
-    @Query('page') page: number,
-    @Query('limit') limit: number,
+    @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number,
+    @Query('limit', new DefaultValuePipe(5), ParseIntPipe) limit: number,
   ) {
     return this.categoriesService.findAll(search, page, limit);
   }

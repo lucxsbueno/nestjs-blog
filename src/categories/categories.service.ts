@@ -69,7 +69,7 @@ export class CategoriesService {
       throw new NotFoundException('Category not found');
     }
 
-    return this.prisma.tag.update({
+    return this.prisma.category.update({
       where: { id },
       data: updateCategoryDto,
     });
