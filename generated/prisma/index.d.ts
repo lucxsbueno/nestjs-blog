@@ -3851,6 +3851,7 @@ export namespace Prisma {
   export type PostMinAggregateOutputType = {
     id: string | null
     title: string | null
+    slug: string | null
     description: string | null
     content: string | null
     thumbUrl: string | null
@@ -3866,6 +3867,7 @@ export namespace Prisma {
   export type PostMaxAggregateOutputType = {
     id: string | null
     title: string | null
+    slug: string | null
     description: string | null
     content: string | null
     thumbUrl: string | null
@@ -3881,6 +3883,7 @@ export namespace Prisma {
   export type PostCountAggregateOutputType = {
     id: number
     title: number
+    slug: number
     description: number
     content: number
     thumbUrl: number
@@ -3906,6 +3909,7 @@ export namespace Prisma {
   export type PostMinAggregateInputType = {
     id?: true
     title?: true
+    slug?: true
     description?: true
     content?: true
     thumbUrl?: true
@@ -3921,6 +3925,7 @@ export namespace Prisma {
   export type PostMaxAggregateInputType = {
     id?: true
     title?: true
+    slug?: true
     description?: true
     content?: true
     thumbUrl?: true
@@ -3936,6 +3941,7 @@ export namespace Prisma {
   export type PostCountAggregateInputType = {
     id?: true
     title?: true
+    slug?: true
     description?: true
     content?: true
     thumbUrl?: true
@@ -4038,6 +4044,7 @@ export namespace Prisma {
   export type PostGroupByOutputType = {
     id: string
     title: string
+    slug: string
     description: string | null
     content: string
     thumbUrl: string | null
@@ -4072,6 +4079,7 @@ export namespace Prisma {
   export type PostSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
+    slug?: boolean
     description?: boolean
     content?: boolean
     thumbUrl?: boolean
@@ -4094,6 +4102,7 @@ export namespace Prisma {
   export type PostSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
+    slug?: boolean
     description?: boolean
     content?: boolean
     thumbUrl?: boolean
@@ -4111,6 +4120,7 @@ export namespace Prisma {
   export type PostSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
+    slug?: boolean
     description?: boolean
     content?: boolean
     thumbUrl?: boolean
@@ -4128,6 +4138,7 @@ export namespace Prisma {
   export type PostSelectScalar = {
     id?: boolean
     title?: boolean
+    slug?: boolean
     description?: boolean
     content?: boolean
     thumbUrl?: boolean
@@ -4140,7 +4151,7 @@ export namespace Prisma {
     favouriteId?: boolean
   }
 
-  export type PostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "content" | "thumbUrl" | "url" | "published" | "averageRating" | "createdAt" | "upadatedAt" | "authorId" | "favouriteId", ExtArgs["result"]["post"]>
+  export type PostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "slug" | "description" | "content" | "thumbUrl" | "url" | "published" | "averageRating" | "createdAt" | "upadatedAt" | "authorId" | "favouriteId", ExtArgs["result"]["post"]>
   export type PostInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     author?: boolean | UserDefaultArgs<ExtArgs>
     favoritedBy?: boolean | Post$favoritedByArgs<ExtArgs>
@@ -4172,6 +4183,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       title: string
+      slug: string
       description: string | null
       content: string
       thumbUrl: string | null
@@ -4613,6 +4625,7 @@ export namespace Prisma {
   interface PostFieldRefs {
     readonly id: FieldRef<"Post", 'String'>
     readonly title: FieldRef<"Post", 'String'>
+    readonly slug: FieldRef<"Post", 'String'>
     readonly description: FieldRef<"Post", 'String'>
     readonly content: FieldRef<"Post", 'String'>
     readonly thumbUrl: FieldRef<"Post", 'String'>
@@ -9390,6 +9403,7 @@ export namespace Prisma {
   export const PostScalarFieldEnum: {
     id: 'id',
     title: 'title',
+    slug: 'slug',
     description: 'description',
     content: 'content',
     thumbUrl: 'thumbUrl',
@@ -9632,6 +9646,7 @@ export namespace Prisma {
     NOT?: PostWhereInput | PostWhereInput[]
     id?: StringFilter<"Post"> | string
     title?: StringFilter<"Post"> | string
+    slug?: StringFilter<"Post"> | string
     description?: StringNullableFilter<"Post"> | string | null
     content?: StringFilter<"Post"> | string
     thumbUrl?: StringNullableFilter<"Post"> | string | null
@@ -9653,6 +9668,7 @@ export namespace Prisma {
   export type PostOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
+    slug?: SortOrder
     description?: SortOrderInput | SortOrder
     content?: SortOrder
     thumbUrl?: SortOrderInput | SortOrder
@@ -9673,6 +9689,7 @@ export namespace Prisma {
 
   export type PostWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    slug?: string
     AND?: PostWhereInput | PostWhereInput[]
     OR?: PostWhereInput[]
     NOT?: PostWhereInput | PostWhereInput[]
@@ -9693,11 +9710,12 @@ export namespace Prisma {
     tags?: TagListRelationFilter
     comments?: CommentListRelationFilter
     postLikes?: PostLikeListRelationFilter
-  }, "id">
+  }, "id" | "slug">
 
   export type PostOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
+    slug?: SortOrder
     description?: SortOrderInput | SortOrder
     content?: SortOrder
     thumbUrl?: SortOrderInput | SortOrder
@@ -9721,6 +9739,7 @@ export namespace Prisma {
     NOT?: PostScalarWhereWithAggregatesInput | PostScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Post"> | string
     title?: StringWithAggregatesFilter<"Post"> | string
+    slug?: StringWithAggregatesFilter<"Post"> | string
     description?: StringNullableWithAggregatesFilter<"Post"> | string | null
     content?: StringWithAggregatesFilter<"Post"> | string
     thumbUrl?: StringNullableWithAggregatesFilter<"Post"> | string | null
@@ -10056,6 +10075,7 @@ export namespace Prisma {
   export type PostCreateInput = {
     id?: string
     title: string
+    slug: string
     description?: string | null
     content: string
     thumbUrl?: string | null
@@ -10075,6 +10095,7 @@ export namespace Prisma {
   export type PostUncheckedCreateInput = {
     id?: string
     title: string
+    slug: string
     description?: string | null
     content: string
     thumbUrl?: string | null
@@ -10094,6 +10115,7 @@ export namespace Prisma {
   export type PostUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     thumbUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10113,6 +10135,7 @@ export namespace Prisma {
   export type PostUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     thumbUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10132,6 +10155,7 @@ export namespace Prisma {
   export type PostCreateManyInput = {
     id?: string
     title: string
+    slug: string
     description?: string | null
     content: string
     thumbUrl?: string | null
@@ -10147,6 +10171,7 @@ export namespace Prisma {
   export type PostUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     thumbUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10160,6 +10185,7 @@ export namespace Prisma {
   export type PostUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     thumbUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10573,6 +10599,7 @@ export namespace Prisma {
   export type PostCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
+    slug?: SortOrder
     description?: SortOrder
     content?: SortOrder
     thumbUrl?: SortOrder
@@ -10592,6 +10619,7 @@ export namespace Prisma {
   export type PostMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
+    slug?: SortOrder
     description?: SortOrder
     content?: SortOrder
     thumbUrl?: SortOrder
@@ -10607,6 +10635,7 @@ export namespace Prisma {
   export type PostMinOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
+    slug?: SortOrder
     description?: SortOrder
     content?: SortOrder
     thumbUrl?: SortOrder
@@ -11488,6 +11517,7 @@ export namespace Prisma {
   export type PostCreateWithoutAuthorInput = {
     id?: string
     title: string
+    slug: string
     description?: string | null
     content: string
     thumbUrl?: string | null
@@ -11506,6 +11536,7 @@ export namespace Prisma {
   export type PostUncheckedCreateWithoutAuthorInput = {
     id?: string
     title: string
+    slug: string
     description?: string | null
     content: string
     thumbUrl?: string | null
@@ -11533,6 +11564,7 @@ export namespace Prisma {
   export type PostCreateWithoutFavoritedByInput = {
     id?: string
     title: string
+    slug: string
     description?: string | null
     content: string
     thumbUrl?: string | null
@@ -11551,6 +11583,7 @@ export namespace Prisma {
   export type PostUncheckedCreateWithoutFavoritedByInput = {
     id?: string
     title: string
+    slug: string
     description?: string | null
     content: string
     thumbUrl?: string | null
@@ -11658,6 +11691,7 @@ export namespace Prisma {
     NOT?: PostScalarWhereInput | PostScalarWhereInput[]
     id?: StringFilter<"Post"> | string
     title?: StringFilter<"Post"> | string
+    slug?: StringFilter<"Post"> | string
     description?: StringNullableFilter<"Post"> | string | null
     content?: StringFilter<"Post"> | string
     thumbUrl?: StringNullableFilter<"Post"> | string | null
@@ -12124,6 +12158,7 @@ export namespace Prisma {
   export type PostCreateWithoutCategoriesInput = {
     id?: string
     title: string
+    slug: string
     description?: string | null
     content: string
     thumbUrl?: string | null
@@ -12142,6 +12177,7 @@ export namespace Prisma {
   export type PostUncheckedCreateWithoutCategoriesInput = {
     id?: string
     title: string
+    slug: string
     description?: string | null
     content: string
     thumbUrl?: string | null
@@ -12181,6 +12217,7 @@ export namespace Prisma {
   export type PostCreateWithoutTagsInput = {
     id?: string
     title: string
+    slug: string
     description?: string | null
     content: string
     thumbUrl?: string | null
@@ -12199,6 +12236,7 @@ export namespace Prisma {
   export type PostUncheckedCreateWithoutTagsInput = {
     id?: string
     title: string
+    slug: string
     description?: string | null
     content: string
     thumbUrl?: string | null
@@ -12269,6 +12307,7 @@ export namespace Prisma {
   export type PostCreateWithoutCommentsInput = {
     id?: string
     title: string
+    slug: string
     description?: string | null
     content: string
     thumbUrl?: string | null
@@ -12287,6 +12326,7 @@ export namespace Prisma {
   export type PostUncheckedCreateWithoutCommentsInput = {
     id?: string
     title: string
+    slug: string
     description?: string | null
     content: string
     thumbUrl?: string | null
@@ -12358,6 +12398,7 @@ export namespace Prisma {
   export type PostUpdateWithoutCommentsInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     thumbUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12376,6 +12417,7 @@ export namespace Prisma {
   export type PostUncheckedUpdateWithoutCommentsInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     thumbUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12394,6 +12436,7 @@ export namespace Prisma {
   export type PostCreateWithoutPostLikesInput = {
     id?: string
     title: string
+    slug: string
     description?: string | null
     content: string
     thumbUrl?: string | null
@@ -12412,6 +12455,7 @@ export namespace Prisma {
   export type PostUncheckedCreateWithoutPostLikesInput = {
     id?: string
     title: string
+    slug: string
     description?: string | null
     content: string
     thumbUrl?: string | null
@@ -12477,6 +12521,7 @@ export namespace Prisma {
   export type PostUpdateWithoutPostLikesInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     thumbUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12495,6 +12540,7 @@ export namespace Prisma {
   export type PostUncheckedUpdateWithoutPostLikesInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     thumbUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12550,6 +12596,7 @@ export namespace Prisma {
   export type PostCreateManyAuthorInput = {
     id?: string
     title: string
+    slug: string
     description?: string | null
     content: string
     thumbUrl?: string | null
@@ -12564,6 +12611,7 @@ export namespace Prisma {
   export type PostCreateManyFavoritedByInput = {
     id?: string
     title: string
+    slug: string
     description?: string | null
     content: string
     thumbUrl?: string | null
@@ -12592,6 +12640,7 @@ export namespace Prisma {
   export type PostUpdateWithoutAuthorInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     thumbUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12610,6 +12659,7 @@ export namespace Prisma {
   export type PostUncheckedUpdateWithoutAuthorInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     thumbUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12628,6 +12678,7 @@ export namespace Prisma {
   export type PostUncheckedUpdateManyWithoutAuthorInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     thumbUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12642,6 +12693,7 @@ export namespace Prisma {
   export type PostUpdateWithoutFavoritedByInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     thumbUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12660,6 +12712,7 @@ export namespace Prisma {
   export type PostUncheckedUpdateWithoutFavoritedByInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     thumbUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12678,6 +12731,7 @@ export namespace Prisma {
   export type PostUncheckedUpdateManyWithoutFavoritedByInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     thumbUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12820,6 +12874,7 @@ export namespace Prisma {
   export type PostUpdateWithoutCategoriesInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     thumbUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12838,6 +12893,7 @@ export namespace Prisma {
   export type PostUncheckedUpdateWithoutCategoriesInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     thumbUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12856,6 +12912,7 @@ export namespace Prisma {
   export type PostUncheckedUpdateManyWithoutCategoriesInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     thumbUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12871,6 +12928,7 @@ export namespace Prisma {
   export type PostUpdateWithoutTagsInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     thumbUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12889,6 +12947,7 @@ export namespace Prisma {
   export type PostUncheckedUpdateWithoutTagsInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     thumbUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12907,6 +12966,7 @@ export namespace Prisma {
   export type PostUncheckedUpdateManyWithoutTagsInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     thumbUrl?: NullableStringFieldUpdateOperationsInput | string | null

@@ -7,11 +7,41 @@ import { PrismaService } from '../prisma.service';
 export class PostsService {
   constructor(private readonly prisma: PrismaService) {}
 
-  create(createPostDto: CreatePostDto) {
+  private async generateUniqueSlug(title: string): Promise<string> {
+    const baseSlug = title
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '');
+
+    let slug = baseSlug;
+    let counter = 1;
+
+    while (true) {
+      const existingPost = await this.prisma.post.findUnique({
+        where: { slug },
+      });
+
+      if (!existingPost) {
+        break;
+      }
+
+      slug = `${baseSlug}-${counter}`;
+      counter++;
+    }
+
+    return slug;
+  }
+
+  async create(createPostDto: CreatePostDto) {
     const { categories, tags, content, ...data } = createPostDto;
+    const slug = await this.generateUniqueSlug(data.title);
+
     return this.prisma.post.create({
       data: {
         ...data,
+        slug,
         content: `${content}`,
         categories: {
           connect: categories?.map((id) => ({ id })) || [],

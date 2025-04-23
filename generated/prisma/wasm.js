@@ -132,6 +132,7 @@ exports.Prisma.UserPreferenceScalarFieldEnum = {
 exports.Prisma.PostScalarFieldEnum = {
   id: 'id',
   title: 'title',
+  slug: 'slug',
   description: 'description',
   content: 'content',
   thumbUrl: 'thumbUrl',
