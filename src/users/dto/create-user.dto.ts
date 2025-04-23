@@ -24,4 +24,7 @@ export class CreateUserDto {
 
   @IsBoolean()
   isAdmin: boolean;
+
+  @IsBoolean()
+  emailUpdates: boolean;
 }

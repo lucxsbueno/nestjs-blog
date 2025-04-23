@@ -12,7 +12,7 @@ export class UsersService {
   constructor(private readonly prisma: PrismaService) {}
 
   async create(createUserDto: CreateUserDto) {
-    const { email } = createUserDto;
+    const { email, role, name, isAdmin, emailUpdates } = createUserDto;
 
     const user = await this.prisma.user.findUnique({
       where: { email },
@@ -23,7 +23,17 @@ export class UsersService {
     }
 
     return this.prisma.user.create({
-      data: createUserDto,
+      data: {
+        email,
+        role,
+        name,
+        isAdmin,
+        userPreference: {
+          create: {
+            emailUpdates,
+          },
+        },
+      },
     });
   }
 
@@ -61,6 +71,12 @@ export class UsersService {
   async findOne(id: string) {
     const user = await this.prisma.user.findUnique({
       where: { id },
+      include: {
+        writtenPosts: true,
+        favoritePosts: true,
+        postLikes: true,
+        userPreference: true,
+      },
     });
 
     if (!user) {
