@@ -18,6 +18,7 @@ model User {
   id             String          @id @default(uuid())
   name           String
   email          String          @unique
+  password       String
   writtenPosts   Post[]          @relation("WrittenPosts")
   favoritePosts  Post[]          @relation("FavoritePosts")
   userPreference UserPreference?

@@ -6,13 +6,26 @@ import {
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { PrismaService } from '../prisma.service';
+import * as bcrypt from 'bcrypt';
+import { UserResponseDto } from './dto/user-response.dto';
+import { plainToInstance } from 'class-transformer';
 
 @Injectable()
 export class UsersService {
   constructor(private readonly prisma: PrismaService) {}
 
+  async findByEmail(email: string) {
+    return this.prisma.user.findUnique({
+      where: { email },
+      include: {
+        userPreference: true,
+      },
+    });
+  }
+
   async create(createUserDto: CreateUserDto) {
-    const { email, role, name, isAdmin, emailUpdates } = createUserDto;
+    const { email, role, name, isAdmin, emailUpdates, password } =
+      createUserDto;
 
     const user = await this.prisma.user.findUnique({
       where: { email },
@@ -22,18 +35,28 @@ export class UsersService {
       throw new BadRequestException('User already exists');
     }
 
-    return this.prisma.user.create({
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const createdUser = await this.prisma.user.create({
       data: {
         email,
         role,
         name,
         isAdmin,
+        password: hashedPassword,
         userPreference: {
           create: {
             emailUpdates,
           },
         },
       },
+      include: {
+        userPreference: true,
+      },
+    });
+
+    return plainToInstance(UserResponseDto, createdUser, {
+      excludeExtraneousValues: true,
     });
   }
 

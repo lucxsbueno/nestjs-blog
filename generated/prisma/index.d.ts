@@ -1624,6 +1624,7 @@ export namespace Prisma {
     id: string | null
     name: string | null
     email: string | null
+    password: string | null
     role: $Enums.Role | null
     isAdmin: boolean | null
   }
@@ -1632,6 +1633,7 @@ export namespace Prisma {
     id: string | null
     name: string | null
     email: string | null
+    password: string | null
     role: $Enums.Role | null
     isAdmin: boolean | null
   }
@@ -1640,6 +1642,7 @@ export namespace Prisma {
     id: number
     name: number
     email: number
+    password: number
     role: number
     isAdmin: number
     _all: number
@@ -1650,6 +1653,7 @@ export namespace Prisma {
     id?: true
     name?: true
     email?: true
+    password?: true
     role?: true
     isAdmin?: true
   }
@@ -1658,6 +1662,7 @@ export namespace Prisma {
     id?: true
     name?: true
     email?: true
+    password?: true
     role?: true
     isAdmin?: true
   }
@@ -1666,6 +1671,7 @@ export namespace Prisma {
     id?: true
     name?: true
     email?: true
+    password?: true
     role?: true
     isAdmin?: true
     _all?: true
@@ -1747,6 +1753,7 @@ export namespace Prisma {
     id: string
     name: string
     email: string
+    password: string
     role: $Enums.Role
     isAdmin: boolean
     _count: UserCountAggregateOutputType | null
@@ -1772,6 +1779,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     email?: boolean
+    password?: boolean
     role?: boolean
     isAdmin?: boolean
     writtenPosts?: boolean | User$writtenPostsArgs<ExtArgs>
@@ -1786,6 +1794,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     email?: boolean
+    password?: boolean
     role?: boolean
     isAdmin?: boolean
   }, ExtArgs["result"]["user"]>
@@ -1794,6 +1803,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     email?: boolean
+    password?: boolean
     role?: boolean
     isAdmin?: boolean
   }, ExtArgs["result"]["user"]>
@@ -1802,11 +1812,12 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     email?: boolean
+    password?: boolean
     role?: boolean
     isAdmin?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "role" | "isAdmin", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "role" | "isAdmin", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     writtenPosts?: boolean | User$writtenPostsArgs<ExtArgs>
     favoritePosts?: boolean | User$favoritePostsArgs<ExtArgs>
@@ -1831,6 +1842,7 @@ export namespace Prisma {
       id: string
       name: string
       email: string
+      password: string
       role: $Enums.Role
       isAdmin: boolean
     }, ExtArgs["result"]["user"]>
@@ -2264,6 +2276,7 @@ export namespace Prisma {
     readonly id: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
+    readonly password: FieldRef<"User", 'String'>
     readonly role: FieldRef<"User", 'Role'>
     readonly isAdmin: FieldRef<"User", 'Boolean'>
   }
@@ -9357,6 +9370,7 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     email: 'email',
+    password: 'password',
     role: 'role',
     isAdmin: 'isAdmin'
   };
@@ -9502,6 +9516,7 @@ export namespace Prisma {
     id?: StringFilter<"User"> | string
     name?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
+    password?: StringFilter<"User"> | string
     role?: EnumRoleFilter<"User"> | $Enums.Role
     isAdmin?: BoolFilter<"User"> | boolean
     writtenPosts?: PostListRelationFilter
@@ -9515,6 +9530,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
+    password?: SortOrder
     role?: SortOrder
     isAdmin?: SortOrder
     writtenPosts?: PostOrderByRelationAggregateInput
@@ -9531,6 +9547,7 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringFilter<"User"> | string
+    password?: StringFilter<"User"> | string
     role?: EnumRoleFilter<"User"> | $Enums.Role
     isAdmin?: BoolFilter<"User"> | boolean
     writtenPosts?: PostListRelationFilter
@@ -9544,6 +9561,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
+    password?: SortOrder
     role?: SortOrder
     isAdmin?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -9558,6 +9576,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"User"> | string
     name?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
+    password?: StringWithAggregatesFilter<"User"> | string
     role?: EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
     isAdmin?: BoolWithAggregatesFilter<"User"> | boolean
   }
@@ -9914,6 +9933,7 @@ export namespace Prisma {
     id?: string
     name: string
     email: string
+    password: string
     role?: $Enums.Role
     isAdmin: boolean
     writtenPosts?: PostCreateNestedManyWithoutAuthorInput
@@ -9927,6 +9947,7 @@ export namespace Prisma {
     id?: string
     name: string
     email: string
+    password: string
     role?: $Enums.Role
     isAdmin: boolean
     writtenPosts?: PostUncheckedCreateNestedManyWithoutAuthorInput
@@ -9940,6 +9961,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     writtenPosts?: PostUpdateManyWithoutAuthorNestedInput
@@ -9953,6 +9975,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     writtenPosts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
@@ -9966,6 +9989,7 @@ export namespace Prisma {
     id?: string
     name: string
     email: string
+    password: string
     role?: $Enums.Role
     isAdmin: boolean
   }
@@ -9974,6 +9998,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -9982,6 +10007,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
   }
@@ -10397,6 +10423,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
+    password?: SortOrder
     role?: SortOrder
     isAdmin?: SortOrder
   }
@@ -10405,6 +10432,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
+    password?: SortOrder
     role?: SortOrder
     isAdmin?: SortOrder
   }
@@ -10413,6 +10441,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
+    password?: SortOrder
     role?: SortOrder
     isAdmin?: SortOrder
   }
@@ -11736,6 +11765,7 @@ export namespace Prisma {
     id?: string
     name: string
     email: string
+    password: string
     role?: $Enums.Role
     isAdmin: boolean
     writtenPosts?: PostCreateNestedManyWithoutAuthorInput
@@ -11748,6 +11778,7 @@ export namespace Prisma {
     id?: string
     name: string
     email: string
+    password: string
     role?: $Enums.Role
     isAdmin: boolean
     writtenPosts?: PostUncheckedCreateNestedManyWithoutAuthorInput
@@ -11776,6 +11807,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     writtenPosts?: PostUpdateManyWithoutAuthorNestedInput
@@ -11788,6 +11820,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     writtenPosts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
@@ -11800,6 +11833,7 @@ export namespace Prisma {
     id?: string
     name: string
     email: string
+    password: string
     role?: $Enums.Role
     isAdmin: boolean
     favoritePosts?: PostCreateNestedManyWithoutFavoritedByInput
@@ -11812,6 +11846,7 @@ export namespace Prisma {
     id?: string
     name: string
     email: string
+    password: string
     role?: $Enums.Role
     isAdmin: boolean
     favoritePosts?: PostUncheckedCreateNestedManyWithoutFavoritedByInput
@@ -11829,6 +11864,7 @@ export namespace Prisma {
     id?: string
     name: string
     email: string
+    password: string
     role?: $Enums.Role
     isAdmin: boolean
     writtenPosts?: PostCreateNestedManyWithoutAuthorInput
@@ -11841,6 +11877,7 @@ export namespace Prisma {
     id?: string
     name: string
     email: string
+    password: string
     role?: $Enums.Role
     isAdmin: boolean
     writtenPosts?: PostUncheckedCreateNestedManyWithoutAuthorInput
@@ -11945,6 +11982,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     favoritePosts?: PostUpdateManyWithoutFavoritedByNestedInput
@@ -11957,6 +11995,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     favoritePosts?: PostUncheckedUpdateManyWithoutFavoritedByNestedInput
@@ -11980,6 +12019,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     writtenPosts?: PostUpdateManyWithoutAuthorNestedInput
@@ -11992,6 +12032,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     writtenPosts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
@@ -12198,6 +12239,7 @@ export namespace Prisma {
     id?: string
     name: string
     email: string
+    password: string
     role?: $Enums.Role
     isAdmin: boolean
     writtenPosts?: PostCreateNestedManyWithoutAuthorInput
@@ -12210,6 +12252,7 @@ export namespace Prisma {
     id?: string
     name: string
     email: string
+    password: string
     role?: $Enums.Role
     isAdmin: boolean
     writtenPosts?: PostUncheckedCreateNestedManyWithoutAuthorInput
@@ -12279,6 +12322,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     writtenPosts?: PostUpdateManyWithoutAuthorNestedInput
@@ -12291,6 +12335,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     writtenPosts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
@@ -12391,6 +12436,7 @@ export namespace Prisma {
     id?: string
     name: string
     email: string
+    password: string
     role?: $Enums.Role
     isAdmin: boolean
     writtenPosts?: PostCreateNestedManyWithoutAuthorInput
@@ -12403,6 +12449,7 @@ export namespace Prisma {
     id?: string
     name: string
     email: string
+    password: string
     role?: $Enums.Role
     isAdmin: boolean
     writtenPosts?: PostUncheckedCreateNestedManyWithoutAuthorInput
@@ -12478,6 +12525,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     writtenPosts?: PostUpdateManyWithoutAuthorNestedInput
@@ -12490,6 +12538,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     writtenPosts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
