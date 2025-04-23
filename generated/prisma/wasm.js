@@ -155,8 +155,7 @@ exports.Prisma.TagScalarFieldEnum = {
 
 exports.Prisma.CommentScalarFieldEnum = {
   id: 'id',
-  name: 'name',
-  email: 'email',
+  userId: 'userId',
   anonymous: 'anonymous',
   content: 'content',
   postId: 'postId',

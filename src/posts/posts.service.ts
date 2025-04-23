@@ -8,10 +8,11 @@ export class PostsService {
   constructor(private readonly prisma: PrismaService) {}
 
   create(createPostDto: CreatePostDto) {
-    const { categories, tags, ...data } = createPostDto;
+    const { categories, tags, content, ...data } = createPostDto;
     return this.prisma.post.create({
       data: {
         ...data,
+        content: `${content}`,
         categories: {
           connect: categories?.map((id) => ({ id })) || [],
         },

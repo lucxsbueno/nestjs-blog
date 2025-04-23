@@ -24,6 +24,7 @@ model User {
   role           Role            @default(GUEST)
   isAdmin        Boolean
   postLikes     PostLike[]
+  comments      Comment[]
   @@index([email])
 }
 
@@ -70,9 +71,9 @@ model Tag {
 
 model Comment {
   id        String @id @default(uuid())
-  name      String?
-  email     String?
-  anonymous Boolean @default(false)
+  user      User?  @relation(fields: [userId], references: [id])
+  userId    String?
+  anonymous Boolean @default(false) 
   content   String
   post      Post   @relation(fields: [postId], references: [id])
   postId    String
