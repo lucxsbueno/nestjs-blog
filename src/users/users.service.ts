@@ -96,8 +96,6 @@ export class UsersService {
       where: { id },
       include: {
         writtenPosts: true,
-        favoritePosts: true,
-        postLikes: true,
         userPreference: true,
       },
     });

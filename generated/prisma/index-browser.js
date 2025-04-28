@@ -119,6 +119,12 @@ exports.Prisma.UserScalarFieldEnum = {
   name: 'name',
   email: 'email',
   password: 'password',
+  bio: 'bio',
+  profileImage: 'profileImage',
+  location: 'location',
+  websiteUrl: 'websiteUrl',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   role: 'role',
   isAdmin: 'isAdmin'
 };
@@ -126,6 +132,8 @@ exports.Prisma.UserScalarFieldEnum = {
 exports.Prisma.UserPreferenceScalarFieldEnum = {
   id: 'id',
   emailUpdates: 'emailUpdates',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   userId: 'userId'
 };
 
@@ -142,33 +150,25 @@ exports.Prisma.PostScalarFieldEnum = {
   createdAt: 'createdAt',
   upadatedAt: 'upadatedAt',
   authorId: 'authorId',
-  favouriteId: 'favouriteId'
-};
-
-exports.Prisma.CategoryScalarFieldEnum = {
-  id: 'id',
-  name: 'name'
+  likes: 'likes'
 };
 
 exports.Prisma.TagScalarFieldEnum = {
   id: 'id',
-  name: 'name'
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.CommentScalarFieldEnum = {
   id: 'id',
-  userId: 'userId',
+  name: 'name',
+  email: 'email',
   anonymous: 'anonymous',
-  content: 'content',
-  postId: 'postId',
-  createdAt: 'createdAt'
-};
-
-exports.Prisma.PostLikeScalarFieldEnum = {
-  id: 'id',
+  comment: 'comment',
   postId: 'postId',
   createdAt: 'createdAt',
-  userId: 'userId'
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -190,10 +190,8 @@ exports.Prisma.ModelName = {
   User: 'User',
   UserPreference: 'UserPreference',
   Post: 'Post',
-  Category: 'Category',
   Tag: 'Tag',
-  Comment: 'Comment',
-  PostLike: 'PostLike'
+  Comment: 'Comment'
 };
 
 /**

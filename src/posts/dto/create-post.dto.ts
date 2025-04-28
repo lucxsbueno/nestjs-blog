@@ -13,6 +13,15 @@ export class CreatePostDto {
   @IsString()
   title: string;
 
+  @ApiProperty({
+    description: 'The slug of the post',
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  slug?: string;
+
   @ApiProperty({ description: 'The description of the post', required: false })
   @IsString()
   @IsOptional()
@@ -52,14 +61,13 @@ export class CreatePostDto {
   authorId: string;
 
   @ApiProperty({
-    description: 'The categories of the post',
+    description: 'The likes of the post',
     required: false,
-    type: [String],
+    type: Number,
   })
-  @IsArray()
-  @IsUUID('4', { each: true })
+  @IsNumber()
   @IsOptional()
-  categories?: string[];
+  likes?: number;
 
   @ApiProperty({
     description: 'The tags of the post',

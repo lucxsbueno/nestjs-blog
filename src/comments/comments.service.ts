@@ -8,15 +8,12 @@ export class CommentsService {
   constructor(private readonly prisma: PrismaService) {}
 
   create(createCommentDto: CreateCommentDto) {
-    const { userId, postId, ...data } = createCommentDto;
+    const { postId, ...data } = createCommentDto;
     return this.prisma.comment.create({
       data: {
         ...data,
         post: {
           connect: { id: postId },
-        },
-        user: {
-          connect: { id: userId },
         },
       },
     });
@@ -30,20 +27,20 @@ export class CommentsService {
 
     const comments = await this.prisma.comment.findMany({
       where: {
-        content: {
+        comment: {
           contains: search,
         },
       },
       skip,
       take,
       include: {
-        user: true,
+        post: true,
       },
     });
 
     const total = await this.prisma.comment.count({
       where: {
-        content: {
+        comment: {
           contains: search,
         },
       },
@@ -64,7 +61,7 @@ export class CommentsService {
     const comment = await this.prisma.comment.findUnique({
       where: { id },
       include: {
-        user: true,
+        post: true,
       },
     });
 

@@ -35,17 +35,15 @@ export class PostsService {
   }
 
   async create(createPostDto: CreatePostDto) {
-    const { categories, tags, content, ...data } = createPostDto;
+    const { tags, content, ...data } = createPostDto;
     const slug = await this.generateUniqueSlug(data.title);
 
     return this.prisma.post.create({
       data: {
         ...data,
         slug,
+        url: `https://lucasbueno.dev.br/blog/${slug}`,
         content: `${content}`,
-        categories: {
-          connect: categories?.map((id) => ({ id })) || [],
-        },
         tags: {
           connect: tags?.map((id) => ({ id })) || [],
         },
@@ -71,7 +69,6 @@ export class PostsService {
       take,
       include: {
         author: true,
-        categories: true,
         tags: true,
         comments: true,
       },
@@ -103,9 +100,7 @@ export class PostsService {
       where: { id },
       include: {
         author: true,
-        categories: true,
         tags: true,
-        postLikes: true,
         comments: true,
       },
     });
@@ -122,21 +117,22 @@ export class PostsService {
       where: { id },
     });
 
+    if (updatePostDto.title) {
+      const slug = await this.generateUniqueSlug(updatePostDto.title);
+      updatePostDto.slug = slug;
+      updatePostDto.url = `https://lucasbueno.dev.br/blog/${slug}`;
+    }
+
     if (!post) {
       throw new NotFoundException('Post not found');
     }
 
-    const { categories, tags, ...data } = updatePostDto;
+    const { tags, ...data } = updatePostDto;
 
     return this.prisma.post.update({
       where: { id },
       data: {
         ...data,
-        categories: categories
-          ? {
-              set: categories.map((id) => ({ id })),
-            }
-          : undefined,
         tags: tags
           ? {
               set: tags.map((id) => ({ id })),
@@ -145,7 +141,6 @@ export class PostsService {
       },
       include: {
         author: true,
-        categories: true,
         tags: true,
       },
     });
